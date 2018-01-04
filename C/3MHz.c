@@ -17,9 +17,25 @@ and verify the example by making it a C program
 //what second it is when we convert from 1Mhz not 3Mhz(Gotcha!).
 // Important : Do not write Arabic number. Write in English.
 // Answer :
+#include <stdio.h>
+#include <windows.h>
 
-int main()
+int square (int A)
 {
+  return A*A;
+}
 
+int main(void)
+{
+  int A;
+  printf("write a A : \n");
+  scanf("%d", &A);
+  __int64 freq, start, end;
+  QueryPerformanceFrequency((LARGE_INTEGER*)(&freq));
+  QueryPerformanceCounter((LARGE_INTEGER*)&start);
+  A = square(A);
+  QueryPerformanceCounter((LARGE_INTEGER*)&end);
+  printf("time interval = %f(ms)\n", (double)(end-start)/freq);
+  printf("A square is : %d ", A);
   return 0;
 }
