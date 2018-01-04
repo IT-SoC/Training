@@ -20,7 +20,6 @@ and C, Make a program and verify it.
 //what second it is when we convert from 1Mhz.
 // Important : Should not use Calculator!
 // Answer :
-
 #include <stdio.h>
 #include <windows.h>
 
