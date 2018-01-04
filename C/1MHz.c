@@ -23,37 +23,37 @@ and C, Make a program and verify it.
 #include <stdio.h>
 #include <windows.h>
 
-void order (int A, int B, int C)
+void order (int *A, int *B, int *C)
 {
   int max, center, min;
-  if (A<B)
+  if (*A<*B)
     {
-      if (B<C)
+      if (*B<*C)
       {
-        max=C, center=B, min=A;
+        max=*C, center=*B, min=*A;
       }
-      else if (C<A)
+      else if (*C<*A)
       {
-        max=B, center=A, min=C;
+        max=*B, center=*A, min=*C;
       }
       else
       {
-        max=B, center=C, min=A;
+        max=*B, center=*C, min=*A;
       }
     }
   else
     {
-      if (A<C)
+      if (*A<*C)
       {
-        max=C, center=A, min=B;
+        max=*C, center=*A, min=*B;
       }
-      else if (C<B)
+      else if (*C<*B)
       {
-        max=A, center=B, min=C;
+        max=*A, center=*B, min=*C;
       }
       else
       {
-        max=A, center=C, min=B;
+        max=*A, center=*C, min=*B;
       }
     }
 
@@ -61,7 +61,7 @@ void order (int A, int B, int C)
 
 }
 
-int test_func (int A, int B, int C)
+int test_func (int *A, int *B, int *C)
 {
   __int64 freq, start, end;
   QueryPerformanceFrequency((LARGE_INTEGER*)(&freq));
@@ -78,7 +78,7 @@ int main(void)
   int A, B, C;
   printf("write 3 numbers. : \n");
   scanf("%d %d %d", &A, &B, &C);
-  test_func (A, B, C);
+  test_func (&A, &B, &C);
   return 0;
 
 }
