@@ -80,5 +80,6 @@ int main(void)
   printf("write 3 numbers. : \n");
   scanf("%d %d %d", &A, &B, &C);
   test_func (A, B, C);
+  return 0;
 
 }
