@@ -21,62 +21,45 @@ Make C program example and verify it.
 #include <stdio.h>
 #include <windows.h>
 
-void order (int *A, int *B, int *C)
+int square (int A)
 {
-  int max, center, min;
-  if (*A<*B)
-    {
-      if (*B<*C)
-      {
-        max=*C, center=*B, min=*A;
-      }
-      else if (*C<*A)
-      {
-        max=*B, center=*A, min=*C;
-      }
-      else
-      {
-        max=*B, center=*C, min=*A;
-      }
-    }
-  else
-    {
-      if (*A<*C)
-      {
-        max=*C, center=*A, min=*B;
-      }
-      else if (*C<*B)
-      {
-        max=*A, center=*B, min=*C;
-      }
-      else
-      {
-        max=*A, center=*C, min=*B;
-      }
-    }
-
-    printf("you want numbers is  %d %d %d .\n", max, center, min);
-
+  return A*A;
 }
 
-int test_func (int *A, int *B, int *C)
+int main (void)
 {
+  int A;
+  printf("write a A : \n");
+  scanf("%d", &A);
   __int64 freq, start, end;
   QueryPerformanceFrequency((LARGE_INTEGER*)(&freq));
   QueryPerformanceCounter((LARGE_INTEGER*)&start);
-  order (A, B, C);
+  A = square(A);
   QueryPerformanceCounter((LARGE_INTEGER*)&end);
   printf("time interval = %f(ms)\n", (double)(end-start)/freq);
+  printf("A square is : %d ", A);
   return 0;
 
 }
+/*void square (int *A)
+{
+  int Answer;
+  Answer = (*A)*(*A);
+  printf("A square is %d\n", Answer);
+  return ;
+}
+
 
 int main(void)
 {
-  int A, B, C;
-  printf("write 3 numbers. : \n");
-  scanf("%d %d %d", &A, &B, &C);
-  test_func (&A, &B, &C);
-  return 0;
-
+  int A;
+  __int64 freq, start, end;
+  printf("write A : \n");
+  scanf("%d", &A);
+  QueryPerformanceFrequency((LARGE_INTEGER*)(&freq));
+  QueryPerformanceCounter((LARGE_INTEGER*)&start);
+  square (&A);
+  QueryPerformanceCounter((LARGE_INTEGER*)&end);
+  printf("time interval = %f(ms)\n", (double)(end-start)/freq);
 }
+*/
